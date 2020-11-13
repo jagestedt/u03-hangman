@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@import 'variables';
+body {
+  color: teal;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.btn {
+  border: 1px solid $white;
+  border-radius: 5px;
+  padding: 1em 1.618em;
+  margin: 0.5em 1em;
+  color: $white;
+  background-color: $primary;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $white;
+    border: 1px solid $primary;
+    color: $primary;
+  }
+}
+
+.container {
+  width: 80%;
+  display: flex;
+  margin: 0 auto;
+  background-color: rgb(255, 246, 127);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
