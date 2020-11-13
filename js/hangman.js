@@ -63,15 +63,18 @@ function updateDOM() {
     //skrivs stringen ut i html
     document.querySelector('.win').innerHTML = 'You win!';
     //och knappen för att börja om blir synlig
-    // document.querySelector('.reset').style.visibility = 'visible';
+    document.querySelector('.reset').style.display = 'flex';
   }
 
-  //om incorrectLetters[] är längre än 10
+  // incorrectLetters too long
+  console.log(imgArr.length);
   if (incorrectLetters.length === imgArr.length) {
     //skrivs stringen ut i html
-    document.getElementById('lose').innerHTML = 'You lose...';
+    document.querySelector('.lose').innerHTML = 'You lose...';
+    document.querySelector('.keyboard').innerHTML = '';
+
     //och knappen för att börja om blir synlig
-    document.getElementById('reset').style.visibility = 'visible';
+    document.querySelector('.reset').style.display = 'flex';
   }
 
   // console.log("randomWord", randomWord);
@@ -127,7 +130,7 @@ function getGuess(letter) {
         blanks[i] = letter;
         // letter is pushed to correctLetters[]
         correctLetters.push(letter);
-        console.log(correctLetters);
+        console.log('correct: ' + correctLetters.length);
       }
     }
   }
@@ -135,7 +138,7 @@ function getGuess(letter) {
   else {
     // letter is pushed to incorrectLetters[]
     incorrectLetters.push(letter);
-    console.log(incorrectLetters);
+    console.log('INcorrect: ' + incorrectLetters.length);
     // sets image url depending on wrong guesses
     let imgIndex = incorrectLetters.length - 1;
     const hangmanImgElement = document.querySelector('.hangman-img');
