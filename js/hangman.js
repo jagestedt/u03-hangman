@@ -24,7 +24,6 @@ const wordArr = [
   'Gentile',
 ];
 
-let count = 0;
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 let imgIndex;
 
@@ -50,36 +49,37 @@ function updateDOM() {
 
   // variable to keep track of total guesses
   let numberOfGuesses = correctLetters.length + incorrectLetters.length;
-  // print
-  document.querySelector('.counter').innerHTML = 'Tries: ' + numberOfGuesses;
+  let guessesElement = document.querySelector('.guesses');
+
+  guessesElement.style.display = 'flex';
+  // print to DOM
+  guessesElement.innerHTML = 'Guesses made: ' + numberOfGuesses;
+
   //deklarerar variabeln lives som börjar på 10 men minskar varje gång incorrectLetters[] fylls på
 
   // the number of hangman images minus the incorrect guesses
   let hp = imgArr.length - incorrectLetters.length;
-  document.querySelector('.health').innerHTML = 'HP :' + hp;
+  document.querySelector('.health').style.display = 'flex';
+
+  document.querySelector('.health').innerHTML = '<i class="fas fa-heart"></i>' + '&nbsp;' + 'HP : ' + hp;
 
   //om correctLetters[] och randomWord är lika långa
   if (correctLetters.length === randomWord.length) {
     //skrivs stringen ut i html
     document.querySelector('.win').innerHTML = 'You win!';
-    //och knappen för att börja om blir synlig
+    // reveal reset-button
     document.querySelector('.reset').style.display = 'flex';
   }
 
   // incorrectLetters too long
-  console.log(imgArr.length);
   if (incorrectLetters.length === imgArr.length) {
-    //skrivs stringen ut i html
+    // print message to DOM and remove keyboard
     document.querySelector('.lose').innerHTML = 'You lose...';
     document.querySelector('.keyboard').innerHTML = '';
 
-    //och knappen för att börja om blir synlig
+    // reveal reset-button
     document.querySelector('.reset').style.display = 'flex';
   }
-
-  // console.log("randomWord", randomWord);
-  // console.log("correctLetters", correctLetters);
-  // console.log("incorrectLetters", incorrectLetters);
 }
 
 function generateKeyboard() {

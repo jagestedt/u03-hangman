@@ -6,14 +6,18 @@
 @import 'variables';
 body {
   color: $dark;
-  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  // font-family: 'Montserrat', sans-serif;
+  font-family: 'VT323', monospace;
   background-color: $dark;
 }
 
 .btn {
+  font-family: 'VT323', monospace;
+  font-size: 1em;
   border: 1px solid $white;
   border-radius: 5px;
-  padding: 1em 1.618em;
+  padding: 0.5em 1em;
   margin: 0.5em 1em;
   color: $white;
   background-color: $primary;
@@ -33,9 +37,9 @@ body {
 
 .container {
   width: 60%;
-  height: 100vh;
+  // height: 100vh;
   display: flex;
-  margin: 0 auto;
+  margin: 1em auto;
   background-color: rgb(255, 246, 127);
   // margin-top: 5vh;
   text-align: center;
@@ -44,26 +48,44 @@ body {
   border-radius: $border-radius;
 
   h1 {
-    margin: 1em;
+    font-size: 3em;
+    // margin: 1em;
     font-weight: 900;
   }
   .hangman-img {
-    height: 25vh;
+    height: 15vh;
   }
 
   .word-area {
     font-size: 4em;
-    margin: 1em;
+    margin: 0.2em;
   }
 
-  .health,
+  .stats {
+    display: flex;
+    justify-content: center;
+  }
   .guesses,
+  .health,
   .reset {
     display: none;
-    margin: 0 auto;
+    // margin: 0 auto;
   }
-
-  .keyboard {
+  .guesses,
+  .health {
+    font-weight: 700;
+    border: 2px solid $primary;
+    padding: 1em;
+    margin: 1em;
+    border-radius: $border-radius;
+  }
+  .health .keyboard {
     justify-content: space-between;
+  }
+  .reset {
+    margin: 1em auto;
+  }
+  .win {
+    font-size: 5em;
   }
 }

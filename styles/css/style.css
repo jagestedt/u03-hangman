@@ -8,14 +8,17 @@
 /* Color Theme Swatches in Hex */
 body {
   color: #0a1c40;
-  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-family: 'VT323', monospace;
   background-color: #0a1c40;
 }
 
 .btn {
+  font-family: 'VT323', monospace;
+  font-size: 1em;
   border: 1px solid #f2d0bd;
   border-radius: 5px;
-  padding: 1em 1.618em;
+  padding: 0.5em 1em;
   margin: 0.5em 1em;
   color: #f2d0bd;
   background-color: #bf2441;
@@ -36,11 +39,10 @@ body {
 
 .container {
   width: 60%;
-  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 0 auto;
+  margin: 1em auto;
   background-color: #fff67f;
   text-align: center;
   display: flex;
@@ -51,28 +53,53 @@ body {
 }
 
 .container h1 {
-  margin: 1em;
+  font-size: 3em;
   font-weight: 900;
 }
 
 .container .hangman-img {
-  height: 25vh;
+  height: 15vh;
 }
 
 .container .word-area {
   font-size: 4em;
-  margin: 1em;
+  margin: 0.2em;
 }
 
-.container .health,
+.container .stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .container .guesses,
+.container .health,
 .container .reset {
   display: none;
-  margin: 0 auto;
 }
 
-.container .keyboard {
+.container .guesses,
+.container .health {
+  font-weight: 700;
+  border: 2px solid #bf2441;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 15px;
+}
+
+.container .health .keyboard {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.container .reset {
+  margin: 1em auto;
+}
+
+.container .win {
+  font-size: 5em;
 }
