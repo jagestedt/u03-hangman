@@ -6,12 +6,18 @@
   <title>Hangman | u03</title>
 
   <link rel="stylesheet" href="/styles/css/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
   <script src="/js/hangman.js" defer></script>
 </head>
 <body>
   <div class="container">
     <main>
-      <h1>Hangman</h1>
+      <section>
+        <h1>Hangman</h1>
+        <p>Guess the word</p>
+      </section>
       <button class="btn start-game-btn" type="button">Start game</button>
       <section class="image">
         <img class="hangman-img"></img>
@@ -19,16 +25,21 @@
       <section class="word-area">
       </section>
       <section class="keyboard">
+        <!-- <h2 class="">Use the buttons to make a guess</h2> -->
+        <ol class="buttons">
       </section>
       <section class="stats">
         <section class="counter"></section>
-        <section class="guesses">Guesses made:&nbsp;</section>
-        <section class="health">HP:&nbsp;</section>
+        <section class="guesses"></section>
+        <section class="health"></section>
       </section> 
       <section class="messages">
         <section class="motivation"></section>
         <section class="win"></section>
         <section class="lose"></section>
+      </section>
+      <section>
+        <button class="btn reset" onClick="window.location.reload();">Try again</button>
       </section> 
     </main>
   </div>

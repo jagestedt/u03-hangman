@@ -7,8 +7,9 @@
 
 /* Color Theme Swatches in Hex */
 body {
-  color: teal;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: #0a1c40;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #0a1c40;
 }
 
 .btn {
@@ -22,6 +23,11 @@ body {
   transition: all 0.2s ease-in-out;
 }
 
+.btn:disabled {
+  background-color: #ccc;
+  color: #f24c3d;
+}
+
 .btn:hover {
   background-color: #f2d0bd;
   border: 1px solid #bf2441;
@@ -29,7 +35,8 @@ body {
 }
 
 .container {
-  width: 80%;
+  width: 50%;
+  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -40,4 +47,26 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border-radius: 15px;
+}
+
+.container .hangman-img {
+  height: 25vh;
+}
+
+.container .word-area {
+  font-size: 4em;
+  margin: 1em;
+}
+
+.container .health,
+.container .guesses,
+.container .reset {
+  display: none;
+}
+
+.container .keyboard {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
