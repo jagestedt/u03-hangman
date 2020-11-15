@@ -10,7 +10,7 @@ const wordArr = [
   'Citizen',
   'Chastise',
   'Colonialism',
-  'Dickbutt',
+  'Donor',
   'Doorbell',
   'Diplomat',
   'Empire',
@@ -43,7 +43,7 @@ let resetBtn = document.querySelector('.reset');
 // EVENT LISTENERS
 startGameBtn.addEventListener('click', startGame);
 
-// All DOM-Updates
+// DOM-Updates
 function updateDOM() {
   // print blanks[] to DOM with a space between
   wordAreaElement.innerHTML = blanks.join(' ');
@@ -77,7 +77,6 @@ function updateDOM() {
 }
 // generates an end of game-message depending on the outcome
 function generateMessage(msg) {
-  console.log(randomWord);
   const msgContainer = document.querySelector('.messages');
   let msgElement = document.createElement('h1');
   if (msg === 'win') {
@@ -98,18 +97,14 @@ function generateKeyboard() {
   }
 }
 
+// Creates buttons based on passed letter and adds onclick-function
 function createButton(letter) {
-  //deklarerar variabeln btn som skapar button-tagg i html
   let btn = document.createElement('button');
-  //i html: <button></button>
 
-  //gör bokstaven till versal
-  btn.innerHTML = letter.toUpperCase();
-  //i html: <button>A</button>
+  btn.innerHTML = letter;
 
-  //skapar ett id som är samma som bokstaven
+  // add id and class
   btn.id = 'button-' + letter;
-  //i html: <button id="button-a">A</button>
   btn.classList = 'btn keyboard-btn';
 
   // adds a onclick-function that calls the the getGuess-function with the clicked letter as a parameter
@@ -125,7 +120,7 @@ function getGuess(letter) {
 
   btn.disabled = true;
 
-  //söker igenom randomWord efter letter
+  // looks for matches of letter in randomWord
   let isCorrect = randomWord.indexOf(letter) !== -1;
 
   // letter is found
@@ -159,33 +154,25 @@ function getRandomWord(arr) {
   randomWord = wordArr[arrIndex].toUpperCase();
   // split into array
   randomWord = randomWord.split('');
-  // console.log('randomWord: ' + randomWord);
-  // console.log(randomWord.length);
 
   return randomWord;
 }
 
 function generateBlanks(word) {
   for (let i = 0; i < randomWord.length; i++) {
-    //for every match in alphabet a underscores is pushed, "!== -1" is returned if there are no matches
+    // for every match in alphabet a underscores is pushed, "!== -1" is returned if there are no matches
     if (alphabet.indexOf(randomWord[i]) !== -1) {
       blanks.push('_');
-      //spaces will push a non-breaking space
+      // spaces will push a non-breaking space
     } else if (randomWord[i] === ' ') {
       blanks.push('&nbsp;');
-      //övriga tecken skrivs ut som dom är
+      // eventual other characters will be printed as is
     } else {
       blanks.push(randomWord[i]);
     }
   }
   updateDOM();
 }
-
-// function setImgSrc(index) {
-//   const hangmanImgElement = document.querySelector('.hangman-img');
-//   // hangmanImg = imgArr[0];
-//   hangmanImgElement.setAttribute('src', imgArr[index]);
-// }
 
 function startGame() {
   startGameBtn.disabled = true;
