@@ -5,33 +5,34 @@
 }
 @import 'variables';
 body {
-  color: $dark;
+  color: $gameboy-5;
   font-size: 20px;
   // font-family: 'Montserrat', sans-serif;
   font-family: 'VT323', monospace;
-  background-color: $dark;
+  background-color: $gameboy-1;
 }
 
 .btn {
   font-family: 'VT323', monospace;
   font-size: 1em;
-  border: 1px solid $white;
+  border: 1px solid $gameboy-5;
   border-radius: 5px;
   padding: 0.5em 1em;
   margin: 0.5em 1em;
-  color: $white;
-  background-color: $primary;
+  color: $gameboy-5;
+  background-color: $gameboy-1;
   transition: all 0.2s ease-in-out;
 
   &:disabled {
-    background-color: #ccc;
-    color: $tertiary;
+    background-color: $gameboy-3;
+    color: $gameboy-2;
+    text-decoration: line-through;
   }
 
   &:hover {
-    background-color: $white;
-    border: 1px solid $primary;
-    color: $primary;
+    background-color: $gameboy-5;
+    border: 1px solid $gameboy-5;
+    color: $gameboy-1;
   }
 }
 
@@ -39,9 +40,9 @@ body {
   width: 60%;
   // height: 100vh;
   display: flex;
+  flex-direction: column;
   margin: 1em auto;
-  background-color: rgb(255, 246, 127);
-  // margin-top: 5vh;
+  background-color: $gameboy-1;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -54,6 +55,9 @@ body {
   }
   .hangman-img {
     height: 15vh;
+    margin-top: 1em;
+    background-color: $gameboy-5;
+    border-radius: $border-radius;
   }
 
   .word-area {
@@ -61,6 +65,15 @@ body {
     margin: 0.2em;
   }
 
+  .messages {
+    h1 {
+      background-color: $gameboy-5;
+      border: 2px solid $gameboy-1;
+      border-radius: $border-radius;
+      color: $gameboy-1;
+      padding: 1em;
+    }
+  }
   .stats {
     display: flex;
     justify-content: center;
@@ -74,7 +87,7 @@ body {
   .guesses,
   .health {
     font-weight: 700;
-    border: 2px solid $primary;
+    border: 2px solid $gameboy-5;
     padding: 1em;
     margin: 1em;
     border-radius: $border-radius;
@@ -87,5 +100,30 @@ body {
   }
   .win {
     font-size: 5em;
+  }
+
+  footer {
+    position: absolute;
+    left: 45%;
+    top: 95%;
+    text-align: center;
+    // margin: 0 auto;
+  }
+}
+@media screen and (max-width: 1000px) {
+  body {
+    font-size: 16px;
+  }
+  .container {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .container {
+    width: 90%;
+
+    .btn {
+      margin: 0.2em;
+    }
   }
 }

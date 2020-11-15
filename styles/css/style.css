@@ -7,34 +7,35 @@
 
 /* Color Theme Swatches in Hex */
 body {
-  color: #0a1c40;
+  color: #ddf6cd;
   font-size: 20px;
   font-family: 'VT323', monospace;
-  background-color: #0a1c40;
+  background-color: #0b1f24;
 }
 
 .btn {
   font-family: 'VT323', monospace;
   font-size: 1em;
-  border: 1px solid #f2d0bd;
+  border: 1px solid #ddf6cd;
   border-radius: 5px;
   padding: 0.5em 1em;
   margin: 0.5em 1em;
-  color: #f2d0bd;
-  background-color: #bf2441;
+  color: #ddf6cd;
+  background-color: #0b1f24;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 
 .btn:disabled {
-  background-color: #ccc;
-  color: #f24c3d;
+  background-color: #397153;
+  color: #081820;
+  text-decoration: line-through;
 }
 
 .btn:hover {
-  background-color: #f2d0bd;
-  border: 1px solid #bf2441;
-  color: #bf2441;
+  background-color: #ddf6cd;
+  border: 1px solid #ddf6cd;
+  color: #0b1f24;
 }
 
 .container {
@@ -42,8 +43,12 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin: 1em auto;
-  background-color: #fff67f;
+  background-color: #0b1f24;
   text-align: center;
   display: flex;
   -webkit-box-pack: center;
@@ -59,11 +64,22 @@ body {
 
 .container .hangman-img {
   height: 15vh;
+  margin-top: 1em;
+  background-color: #ddf6cd;
+  border-radius: 15px;
 }
 
 .container .word-area {
   font-size: 4em;
   margin: 0.2em;
+}
+
+.container .messages h1 {
+  background-color: #ddf6cd;
+  border: 2px solid #0b1f24;
+  border-radius: 15px;
+  color: #0b1f24;
+  padding: 1em;
 }
 
 .container .stats {
@@ -84,7 +100,7 @@ body {
 .container .guesses,
 .container .health {
   font-weight: 700;
-  border: 2px solid #bf2441;
+  border: 2px solid #ddf6cd;
   padding: 1em;
   margin: 1em;
   border-radius: 15px;
@@ -102,4 +118,29 @@ body {
 
 .container .win {
   font-size: 5em;
+}
+
+.container footer {
+  position: absolute;
+  left: 45%;
+  top: 95%;
+  text-align: center;
+}
+
+@media screen and (max-width: 1000px) {
+  body {
+    font-size: 16px;
+  }
+  .container {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    width: 90%;
+  }
+  .container .btn {
+    margin: 0.2em;
+  }
 }

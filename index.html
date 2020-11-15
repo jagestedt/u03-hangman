@@ -7,12 +7,9 @@
 
   <link rel="stylesheet" href="/styles/css/style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-<script src="https://kit.fontawesome.com/351ec2fcca.js" crossorigin="anonymous"></script>
-
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  
+  <script src="https://kit.fontawesome.com/351ec2fcca.js" crossorigin="anonymous"></script>
   <script src="/js/hangman.js" defer></script>
 </head>
 <body>
@@ -21,30 +18,29 @@
       <section>
         <h1>Hangman</h1>
         <p>Guess the word</p>
+        <button class="btn start-game-btn" type="button">Start game</button>
       </section>
-      <button class="btn start-game-btn" type="button">Start game</button>
-      <section class="image">
-        <img class="hangman-img"></img>
-      </section>
-      <section class="word-area">
-      </section>
-      <section class="keyboard">
-        <!-- <h2 class="">Use the buttons to make a guess</h2> -->
-        <ol class="buttons">
-      </section>
-      <section class="stats">
-        <section class="guesses"></section>
-        <section class="health"></section>
-      </section> 
-      <section class="messages">
-        <section class="motivation"></section>
-        <section class="win"></section>
-        <section class="lose"></section>
-      </section>
+      <div class="game-area">
+
+        <section class="image">
+          <img class="hangman-img"></img>
+        </section>
+        <section class="word-area">
+        </section>
+        <section class="keyboard">
+        </section>
+        <section class="messages">
+        </section>
+        <section class="stats">
+          <section class="guesses"></section>
+          <section class="health"></section>
+        </section> 
+      </div>
       <section>
-        <button class="btn reset" onClick="window.location.reload();">Try again</button>
+        <button class="btn reset" onClick="window.location.reload();">Play again</button>
       </section> 
     </main>
+    <footer>&copy; Samuel Jägestedt 2020</footer>
   </div>
 </body>
 </html>

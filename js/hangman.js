@@ -24,8 +24,7 @@ const wordArr = [
   'Gentile',
 ];
 
-const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-let imgIndex;
+const alphabet = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('');
 
 // array containing url for images
 let imgArr = ['img/0.svg', 'img/1.svg', 'img/2.svg', 'img/3.svg', 'img/4.svg', 'img/5.svg', 'img/6.svg', 'img/7.svg', 'img/8.svg', 'img/9.svg', 'img/10.svg', 'img/11.svg'];
@@ -35,9 +34,11 @@ let blanks = [];
 let correctLetters = [];
 let incorrectLetters = [];
 
-// QUERY SELECTOR-VARIABLES
-
+// ELEMENT-VARIABLES
 let startGameBtn = document.querySelector('.start-game-btn');
+let keyboardElement = document.querySelector('.keyboard');
+let wordAreaElement = document.querySelector('.word-area');
+let resetBtn = document.querySelector('.reset');
 
 // EVENT LISTENERS
 startGameBtn.addEventListener('click', startGame);
@@ -45,7 +46,7 @@ startGameBtn.addEventListener('click', startGame);
 // All DOM-Updates
 function updateDOM() {
   // print blanks[] to DOM with a space between
-  document.querySelector('.word-area').innerHTML = blanks.join(' ');
+  wordAreaElement.innerHTML = blanks.join(' ');
 
   // variable to keep track of total guesses
   let numberOfGuesses = correctLetters.length + incorrectLetters.length;
@@ -55,40 +56,45 @@ function updateDOM() {
   // print to DOM
   guessesElement.innerHTML = 'Guesses made: ' + numberOfGuesses;
 
-  //deklarerar variabeln lives som börjar på 10 men minskar varje gång incorrectLetters[] fylls på
-
   // the number of hangman images minus the incorrect guesses
   let hp = imgArr.length - incorrectLetters.length;
+  console.log(hp);
+
   document.querySelector('.health').style.display = 'flex';
 
   document.querySelector('.health').innerHTML = '<i class="fas fa-heart"></i>' + '&nbsp;' + 'HP : ' + hp;
 
-  //om correctLetters[] och randomWord är lika långa
+  // correctLetters and randomWord equal length
   if (correctLetters.length === randomWord.length) {
-    //skrivs stringen ut i html
-    document.querySelector('.win').innerHTML = 'You win!';
-    // reveal reset-button
-    document.querySelector('.reset').style.display = 'flex';
+    generateMessage('win');
+    keyboardElement.innerHTML = '';
   }
-
   // incorrectLetters too long
   if (incorrectLetters.length === imgArr.length) {
-    // print message to DOM and remove keyboard
-    document.querySelector('.lose').innerHTML = 'You lose...';
-    document.querySelector('.keyboard').innerHTML = '';
-
-    // reveal reset-button
-    document.querySelector('.reset').style.display = 'flex';
+    generateMessage('lose');
+    keyboardElement.innerHTML = '';
   }
 }
-
+// generates an end of game-message depending on the outcome
+function generateMessage(msg) {
+  console.log(randomWord);
+  const msgContainer = document.querySelector('.messages');
+  let msgElement = document.createElement('h1');
+  if (msg === 'win') {
+    msgElement.textContent = 'Congratulations! You won!';
+  } else {
+    msgElement.textContent = `You lost! The word was: ${randomWord.join('')}`;
+  }
+  msgContainer.appendChild(msgElement);
+  document.querySelector('.reset').style.display = 'flex';
+}
 function generateKeyboard() {
   // iterates the alphabet array
   for (let i = 0; i < alphabet.length; i++) {
     // the function createButton creates a unique button each iteration
     let buttonElement = createButton(alphabet[i]);
     // which are appended as children of buttons-class
-    document.querySelector('.buttons').appendChild(buttonElement);
+    keyboardElement.appendChild(buttonElement);
   }
 }
 
@@ -138,7 +144,6 @@ function getGuess(letter) {
   else {
     // letter is pushed to incorrectLetters[]
     incorrectLetters.push(letter);
-    console.log('INcorrect: ' + incorrectLetters.length);
     // sets image url depending on wrong guesses
     let imgIndex = incorrectLetters.length - 1;
     const hangmanImgElement = document.querySelector('.hangman-img');
@@ -150,8 +155,8 @@ function getGuess(letter) {
 function getRandomWord(arr) {
   // get a random index/postion in the wordArr
   const arrIndex = Math.floor(Math.random() * wordArr.length);
-  // store the word in a variable in lower-case for easier comparison ahead
-  let randomWord = wordArr[arrIndex].toLowerCase();
+  // store the word in a variable in upper-case for easier comparison ahead
+  randomWord = wordArr[arrIndex].toUpperCase();
   // split into array
   randomWord = randomWord.split('');
   // console.log('randomWord: ' + randomWord);
@@ -185,12 +190,9 @@ function generateBlanks(word) {
 function startGame() {
   startGameBtn.disabled = true;
   startGameBtn.style = 'display: none';
+
   randomWord = getRandomWord(); // the word as an array
   console.log(randomWord);
   generateBlanks();
   generateKeyboard();
-  // imgIndex = getGuess(letter);
-  // debugger;
-
-  // setImgSrc();
 }
