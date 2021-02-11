@@ -1,6 +1,6 @@
 // GLOBAL VARIABLES
 // add array of words and create alphabet array
-const wordArr = [
+const orig_wordArr = [
   'Ashtray',
   'Anomaly',
   'Almonds',
@@ -22,6 +22,22 @@ const wordArr = [
   'Gorilla',
   'Gentleman',
   'Gentile',
+];
+
+const wordArr = [
+  'Wilmer',
+  'Elsa',
+  'Love',
+  'Emilia',
+  'Robin',
+  'Samuel',
+  'Kristoffer',
+  'Cecilia',
+  'Staffan',
+  'Britten',
+  'Rihad',
+  'Rahima',
+  'Azad'
 ];
 
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('');
